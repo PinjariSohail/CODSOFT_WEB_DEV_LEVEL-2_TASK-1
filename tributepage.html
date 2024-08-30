@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400..700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Merienda:wght@300..900&family=Varela+Round&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <link rel="icon" type="image/png" href="tribute/logos.png" />
+  <title>Sunita Williams</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url("tribute/backgroung.jpg");
+      background-size: cover;
+      background-position: center;
+      color: #333;
+      cursor: none;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      background-image: url("tribute/cursor2.png");
+      background-size: contain;
+      background-position: center;
+      pointer-events: none;
+      z-index: 100000;
+      display: block;
+      transform: translate(9%, 9%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgba(240, 255, 251, 0.096);
+      box-shadow: 0 10px 30px 5px rgba(255, 255, 255, 0.951);
+      text-align: center;
+      position: relative;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: -20px;
+    }
+
+    .tesla-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 0%;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border: 4px solid #243978;
+      margin-right: 20px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .tesla-photo:hover {
+      box-shadow: 0 0 15px rgb(255, 255, 255);
+    }
+
+    @keyframes pulse {
+      0% {
+        text-shadow: 2px 2px 4px rgba(4, 99, 75, 0.808);
+      }
+
+      50% {
+        text-shadow: 2px 2px 20px rgba(4, 99, 75, 0.5);
+      }
+
+      100% {
+        text-shadow: 2px 2px 4px rgba(4, 99, 75, 0.808);
+      }
+    }
+
+    h1 {
+      font-size: 3em;
+      font-family: "Merienda", cursive;
+      color: #33a3b1;
+      text-shadow: 2px 2px 4px rgb(0, 0, 0);
+      animation: pulse 1s infinite;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    h1:hover {
+      color: #ffffff;
+      text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.808);
+    }
+
+    .inventions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .invention {
+      flex-basis: 43%;
+      margin: 15px;
+      padding: 20px;
+      background: #f0f0f0;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .invention h3 {
+      font-size: 1.5em;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #21768b;
+    }
+
+    .invention p {
+      font-size: 1.5em;
+      font-family: "Caveat", cursive;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-style: normal;
+      color: #000000;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .invention:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgb(255, 255, 255);
+    }
+
+    .invention img {
+      margin-top: 10px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: contain;
+      margin-bottom: -5px;
+      box-shadow: 0 0 10px rgb(0, 0, 0);
+      background-blend-mode: multiply;
+      background-size: cover;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .invention img:hover {
+      box-shadow: 0 0 15px rgba(9, 5, 119, 0.923);
+    }
+
+    svg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 1em;
+      color: #282323d3;
+      background: rgba(255, 255, 255, 0.722);
+      border-top: 3px solid #241ed2d1;
+    }
+
+    footer a {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .read-more-link {
+      font-size: 1.5em;
+      text-decoration: none;
+      text-align: center;
+      color: #ffffff;
+      margin-left: 15px;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    .read-more-link:hover {
+      color: #346ad5;
+      text-shadow: 0 0 10px rgb(0, 0, 0);
+      text-decoration: underline;
+    }
+
+    .inspiration {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #c4e3e8e0;
+      border-radius: 10px;
+      text-align: left;
+      margin-bottom: 40px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .inspiration:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.97);
+    }
+
+    .inspiration h2 {
+      font-family: "Merienda", cursive;
+      color: #081110d5;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .inspiration h2:hover {
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.825);
+    }
+
+    .inspiration ul {
+      list-style-type: disc;
+      padding-left: 40px;
+      font-size: 1.5em;
+      font-family: "Caveat", cursive;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      color: #081110d5;
+      line-height: 1.6;
+    }
+
+    .inspiration li {
+      margin-bottom: 10px;
+    }
+
+    .logo-icon {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 26, 18, 0.74);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      display: none;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const images = document.querySelectorAll(".invention img");
+      const colorThief = new ColorThief();
+
+      images.forEach((img) => {
+        if (img.complete) {
+          applyTransparentBackground(img);
+        } else {
+          img.addEventListener("load", function () {
+            applyTransparentBackground(img);
+          });
+        }
+      });
+
+      function applyTransparentBackground(img) {
+        const dominantColor = colorThief.getColor(img);
+        const rgbaColor = `rgba(${dominantColor[0]}, ${dominantColor[1]}, ${dominantColor[2]}, 0.5)`;
+        img.style.backgroundColor = rgbaColor;
+      }
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    const links = document.querySelectorAll("a[href]");
+
+    links.forEach((link) => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            const overlay = document.querySelector(".loading-overlay");
+            overlay.style.display = "flex";
+
+            setTimeout(() => {
+                window.location.href = this.href;
+            }, 3000);
+        });
+    });
+});
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cursor = document.querySelector('.custom-cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        const cursorWidth = cursor.offsetWidth;
+        const cursorHeight = cursor.offsetHeight;
+        cursor.style.left = `${e.clientX - cursorWidth / 2}px`;
+        cursor.style.top = `${e.clientY - cursorHeight / 2}px`;
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="custom-cursor"></div>
+  <div class="loading-overlay">
+    <video class="logo-icon" autoplay loop muted>
+      <source src="tribute/preloder.mp4" type="video/mp4">
+    </video>
+  </div>
+  <svg></svg>
+  </div>
+  <div class="container">
+    <div class="header">
+      <img src="tribute/photo-1.jpg" alt="Sunita Willams" class="tesla-photo" />
+      <h1>Sunita Williams</h1>
+    </div>
+    <div class="inventions">
+      <div class="invention">
+        <img src="tribute/Expedition 14,15.jpg" alt="Expedition 14/15" />
+        <h3>Expedition 14/15 (2006-2007)</h3>
+        <p>
+          Sunita Williams launched on Expedition 14/15 in December 2006 aboard Space Shuttle Atlantis, spending 195 days
+          on the ISS. She set a record for the longest spaceflight by a female astronaut at the time. Williams conducted
+          crucial spacewalks to install new solar arrays and upgrade the ISS’s power systems. Her efforts significantly
+          enhanced the station's capabilities and contributed valuable data through scientific experiments. Her time in
+          space was also marked by extensive public outreach, inspiring global audiences.
+        </p>
+      </div>
+      <div class="invention">
+        <img src="tribute/Expedition 32,33.jpg" alt="Expedition 32/33" />
+        <h3>Expedition 32/33 (2012-2013)</h3>
+        <p>
+          Returning to the ISS in July 2012 for Expedition 32/33, Sunita Williams spent 127 days in orbit. She performed
+          multiple spacewalks for the installation and maintenance of essential equipment, ensuring smooth station
+          operations. Her work supported various scientific experiments and station upgrades, advancing our
+          understanding in multiple fields. Williams also engaged in public outreach, sharing her space experiences and
+          fostering interest in space exploration. Her efforts continued to inspire and educate the public about space
+          science.
+        </p>
+      </div>
+      <div class="invention">
+        <img src="tribute/sunita-williams2.webp" alt="Expedition 35" />
+        <h3>Expedition 35 (2013)</h3>
+        <p>
+          During Expedition 35, which began in March 2013, Sunita Williams further contributed to the ISS through
+          diverse scientific experiments and critical maintenance tasks. Her expertise was vital for performing complex
+          repairs and upgrades, enhancing the station’s research capabilities. Williams’s commitment extended to public
+          outreach, where she promoted STEM education and inspired future generations. Her achievements in space
+          continued to highlight her dedication to both scientific advancement and public engagement.
+        </p>
+      </div>
+    </div>
+    <a href="https://en.wikipedia.org/wiki/Sunita_Williams" target="_blank" class="read-more-link">
+      Read more in Wikipedia
+    </a>
+  </div>
+  <div class="inspiration">
+    <h2>He's my inspiration because...</h2>
+    <ul>
+      <li>
+        Sunita Williams holds records for the most spacewalks by a woman and the longest cumulative spacewalk time. 
+        Her achievements exemplify resilience and a pioneering spirit in space exploration.
+      </li>
+      <li>
+        Before becoming an astronaut, Williams served as a skilled helicopter pilot and test pilot in the U.S. Navy. 
+        Her dedication to service underscores her commitment to contributing to her country and the world.
+      </li>
+      <li>
+        Williams completed the Boston Marathon in space, running on a treadmill aboard the ISS. 
+        This incredible feat showcases her physical and mental strength, pushing the boundaries of human capability.
+      </li>
+      <li>
+        As a female astronaut of Indian-American descent, Sunita Williams is a role model for women and minorities in STEM. 
+        Her achievements inspire young people to pursue their dreams in science and technology.
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>&copy; Copyright 2024 Sohail's Webpage. All rights reserved.</p>
+    <p>Designed by SP</p>
+    <p>
+      <a href="https://github.com/PinjariSohail" target="_blank">GitHub</a>
+      | <a href="https://t.me/sohail119980" target="_blank">Telegram</a> |
+      <a href="https:linkedin.com/in/pinjari-sohail-868052295" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
+</body>
+
+</html>
+
+

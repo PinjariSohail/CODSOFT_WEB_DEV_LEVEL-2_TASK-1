@@ -24,18 +24,7 @@
       cursor: none;
     }
 
-    .custom-cursor {
-      position: fixed;
-      width: 25px;
-      height: 25px;
-      background-image: url("tribute/cursor2.png");
-      background-size: contain;
-      background-position: center;
-      pointer-events: none;
-      z-index: 100000;
-      display: block;
-      transform: translate(9%, 9%);
-    }
+    
 
     .container {
       max-width: 1200px;
@@ -70,19 +59,7 @@
       box-shadow: 0 0 15px rgb(255, 255, 255);
     }
 
-    @keyframes pulse {
-      0% {
-        text-shadow: 2px 2px 4px rgba(4, 99, 75, 0.808);
-      }
-
-      50% {
-        text-shadow: 2px 2px 20px rgba(4, 99, 75, 0.5);
-      }
-
-      100% {
-        text-shadow: 2px 2px 4px rgba(4, 99, 75, 0.808);
-      }
-    }
+    
 
     h1 {
       font-size: 3em;
@@ -213,18 +190,7 @@
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .inspiration:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.97);
-    }
-
-    .inspiration h2 {
-      font-family: "Merienda", cursive;
-      color: #081110d5;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
+    
     .inspiration h2:hover {
       text-shadow: 0 0 2px rgba(255, 255, 255, 0.825);
     }
@@ -251,19 +217,7 @@
       overflow: hidden;
     }
 
-    .loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 26, 18, 0.74);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      display: none;
-    }
+    
   </style>
 
   <script>
@@ -310,8 +264,6 @@
 
       document.addEventListener('mousemove', (e) => {
         const cursorWidth = cursor.offsetWidth;
-        const cursorHeight = cursor.offsetHeight;
-        cursor.style.left = `${e.clientX - cursorWidth / 2}px`;
         cursor.style.top = `${e.clientY - cursorHeight / 2}px`;
       });
     });
@@ -397,11 +349,7 @@
   <footer>
     <p>&copy; Copyright 2024 Sohail's Webpage. All rights reserved.</p>
     <p>Designed by SP</p>
-    <p>
-      <a href="https://github.com/PinjariSohail" target="_blank">GitHub</a>
-      | <a href="https://t.me/sohail119980" target="_blank">Telegram</a> |
-      <a href="https:linkedin.com/in/pinjari-sohail-868052295" target="_blank">LinkedIn</a>
-    </p>
+    
   </footer>
 </body>
 
